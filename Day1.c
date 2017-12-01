@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
 /*
  * Note this is my first time programming in C so dont take this as great code.
@@ -9,6 +10,7 @@ int day1(){
 
     int size = strlen(input);
     int count = 0;
+    bool part1 = false; //Set to true to solve part 1
 
     for(int i = 0; i < size; i++ ){
         char c = input[i];
@@ -17,10 +19,18 @@ int day1(){
 
         //Gets the next place, and if its the last char is goes back to the first one
         int place = i + 1;
-        if(place == size){
-            place = 0;
-        }
 
+        if(part1){
+            if(place == size){
+                place = 0;
+            }
+        } else {
+            place = i + (size /2);
+            while (place > size){
+                place -= size;
+            }
+        }
+        
         //If the current char is equal to the next one, add it to the count
         if(ci == (input[place]- '0')){
             count += ci;
