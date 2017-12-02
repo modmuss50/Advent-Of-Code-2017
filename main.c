@@ -1,6 +1,6 @@
-#include "Day1.c"
+#include "Day2.c"
 
 int main() {
-    day1();
+    day2();
     return 0;
 }
